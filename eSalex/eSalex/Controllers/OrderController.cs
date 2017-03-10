@@ -11,10 +11,14 @@ namespace eSalex.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            Models.OrderService orderService = new Models.OrderService();
-            var order = orderService.GetOrderById("87");
-            ViewBag.CustId = order.CustId;
-            ViewBag.CustName = order.CustName;
+            //Models.OrderService orderService = new Models.OrderService();
+            //var order = orderService.GetOrderById("87");
+            //ViewBag.CustId = order.CustId;
+            //ViewBag.CustName = order.CustName;
+
+            //ViewBag.Desc = "我是 ViewBag";
+            //ViewData["Desc2"] = "我是 ViewData";
+            //TempData["Desc2"] = "我是 TempData";
             
             return View();
         }
@@ -26,9 +30,24 @@ namespace eSalex.Controllers
         [HttpPost]
         public ActionResult InsertOrder(Models.Order order)
         {
-            Models.OrderService orderService = new Models.OrderService();
-            orderService.InsertOrder(order);
-            return View("Index");
+            //Models.OrderService orderService = new Models.OrderService();
+            //orderService.InsertOrder(order);
+            //return View("Index");
+            ViewBag.Desc = "我是 ViewBag";
+            ViewData["Desc2"] = "我是 ViewData";
+            TempData["Desc2"] = "我是 TempData";
+            return RedirectToAction("Index");
+        }
+
+        public JsonResult TestJson()
+        {
+            //var result = new Models.Order();
+            //result.CustId = "87";
+            //result.CustName = "魯蛋";
+
+            var result = new Models.Order() { CustId = "87", CustName = "魯蛋" };
+
+            return this.Json(result,JsonRequestBehavior.AllowGet);
         }
     }
 }

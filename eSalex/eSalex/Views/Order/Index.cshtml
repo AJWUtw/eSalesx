@@ -12,8 +12,11 @@
 </head>
 <body>
     <div> 
-        CustId:@ViewBag.CustId  </br>
-        CustName:@ViewBag.CustName
+        <!--CustId:@ViewBag.CustId  </br>
+        CustName:@ViewBag.CustName -->
+        @ViewBag.Desc  </br>
+        @ViewData["Desc2"]  </br>
+        @TempData["Desc2"]  </br>
     </div>
 </body>
 </html>
