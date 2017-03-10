@@ -11,8 +11,24 @@ namespace eSalex.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            ViewBag.DEMO = "HelloWorld";
+            Models.OrderService orderService = new Models.OrderService();
+            var order = orderService.GetOrderById("87");
+            ViewBag.CustId = order.CustId;
+            ViewBag.CustName = order.CustName;
+            
             return View();
+        }
+
+        public ActionResult InsertOrder()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult InsertOrder(Models.Order order)
+        {
+            Models.OrderService orderService = new Models.OrderService();
+            orderService.InsertOrder(order);
+            return View("Index");
         }
     }
 }
