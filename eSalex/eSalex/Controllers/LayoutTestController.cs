@@ -11,7 +11,13 @@ namespace eSalex.Controllers
         // GET: LayoutTest
         public ActionResult Index()
         {
+            ViewBag.test = "1";
             return View();
+        }
+
+        public ActionResult TestPartial()
+        {
+            return PartialView("_SysDatePartial");
         }
     }
 }

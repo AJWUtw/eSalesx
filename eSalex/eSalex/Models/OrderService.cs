@@ -48,7 +48,14 @@ namespace eSalex.Models
         /// 取得訂單資訊
         /// </summary>
         /// <typeparam name="GetOrderByCondition">篩選條件</typeparam>
-        public void List<GetOrderByCondition>() { }
+        public List<Models.Order> GetOrderByCondition() {
+            List<Models.Order> result = new List<Order>();
+            result.Add(new Order() { CustId = "001", CustName = "叡揚資訊", EmpId = 1, EmpName = "王小明", Orderdate = DateTime.Parse("2015/11/08") });
+            result.Add(new Order() { CustId = "002", CustName = "叡揚資訊", EmpId = 1, EmpName = "王大明", Orderdate = DateTime.Parse("2016/11/08") });
+
+
+            return result;
+        }
 
 
     }

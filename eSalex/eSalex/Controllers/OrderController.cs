@@ -49,5 +49,27 @@ namespace eSalex.Controllers
 
             return this.Json(result,JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetOrderList()
+        {
+            Models.OrderService orderservice = new Models.OrderService();
+            ViewBag.Data = orderservice.GetOrderByCondition();
+            return View();
+        }
+
+        public ActionResult GetDropDownList()
+        {
+            List<SelectListItem> custData = new List<SelectListItem>();
+            custData.Add(new SelectListItem() {
+                Text = "王小明",
+                Value = "1"
+            });
+            custData.Add(new SelectListItem()
+            {
+                Text = "王大明",
+                Value = "2"
+            });
+            ViewBag.custData = custData;
+            return View();
+        }
     }
 }

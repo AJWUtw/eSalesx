@@ -26,3 +26,19 @@
 
 
 </table>
+
+@if (ViewBag.test == "1")
+{
+    <div>我是一</div>
+}
+else
+{
+    <div>我不是一</div>
+}
+
+@{ Html.RenderPartial("_SysDatePartial");}
+
+@{ Html.RenderAction("TestPartial", "LayoutTest");}
+
+
+@*我不會被顯示*@

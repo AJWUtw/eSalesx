@@ -1,0 +1,18 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetDropDownList</title>
+</head>
+<body>
+    <div> 
+        @Html.DropDownList("客戶代號", (List < SelectListItem > )ViewBag.custData);
+    </div>
+</body>
+</html>
