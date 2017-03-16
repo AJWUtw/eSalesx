@@ -27,7 +27,7 @@ namespace eSalex.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost()]
         public ActionResult InsertOrder(Models.Order order)
         {
             //Models.OrderService orderService = new Models.OrderService();
@@ -38,7 +38,7 @@ namespace eSalex.Controllers
             TempData["Desc2"] = "我是 TempData";
             return RedirectToAction("Index");
         }
-
+        [HttpGet()]
         public JsonResult TestJson()
         {
             //var result = new Models.Order();
