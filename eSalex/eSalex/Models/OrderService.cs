@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace eSalex.Models
 {
@@ -11,10 +14,21 @@ namespace eSalex.Models
     public class OrderService
     {
         /// <summary>
+		/// 取得DB連線字串
+		/// </summary>
+		/// <returns></returns>
+		private string GetDBConnectionString()
+        {
+            return
+                System.Configuration.ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString.ToString();
+        }
+        /// <summary>
         /// 新增訂單
         /// </summary>
         /// <param name="order"></param>
-        public void InsertOrder(Models.Order order) { }
+        public void InsertOrder(Models.Order order) {
+            
+        }
 
 
         /// <summary>
@@ -57,6 +71,24 @@ namespace eSalex.Models
             return result;
         }
 
+        public DataTable TsetDBConn()
+        {
+            
+                DataTable dt = new DataTable();
+                string sql = @"SELECT CustomerID FROM Sales.Orders WHERE OrderID = @OrderID ";
+                using (SqlConnection conn = new SqlConnection(this.GetDBConnectionString()))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.Add(new SqlParameter("@OrderID", 10248));
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                    sqlAdapter.Fill(dt);
+                    conn.Close();
+                }
+                return dt;
+
+            
+        }
 
     }
 }

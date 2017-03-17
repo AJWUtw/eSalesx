@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace eSalex.Controllers
 {
@@ -19,8 +21,13 @@ namespace eSalex.Controllers
             //ViewBag.Desc = "我是 ViewBag";
             //ViewData["Desc2"] = "我是 ViewData";
             //TempData["Desc2"] = "我是 TempData";
-            
-            return View();
+            Models.OrderService orderService = new Models.OrderService();
+            var tmp = orderService.TsetDBConn();
+            foreach (DataRow row in tmp.Rows)
+            {
+                ViewBag.data = row["CustomerID"].ToString();
+            }
+                return View();
         }
 
         public ActionResult InsertOrder()
